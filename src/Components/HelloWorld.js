@@ -20,7 +20,6 @@ function UserName(props){
 function HelloWorld(){
     return(
         <div className="p-2">
-            <h1 className="font-bold text-2xl">This is the homepage</h1>
             <UserName name="David"/>
         </div>
     )

@@ -1,8 +1,4 @@
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-// import './App.css';
-import HelloWorld from "./Components/HelloWorld";
-
+import React from "react";
 // React router imports
 import{
   BrowserRouter as Router,
@@ -11,42 +7,37 @@ import{
   Link
 } from "react-router-dom"
 
-function Home(){
-  return <h1 className="">This is the homepage.</h1>;
-}
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+// import './App.css';
 
-function About(){
-  return <h1 className="">This is the About page.</h1>;
-}
+import Home from "./Views/Home";
+import About from "./Views/About";
+import ContactUs from "./Views/ContactUs";
+
+
+
 
 function App(){
   return(
     <div>
-      <Header/>
-      <HelloWorld/>
       <Router>
-          <ul>
-            <li>
-              <Link to='/' className="text-blue-500">Home</Link>
-            </li>
-            <li>
-              <Link to='/about' className="text-blue-500">About</Link>
-            </li>
-          </ul>
-          {/* The below changes the content displayed */}
+        <Header/>
+      
+          {/* Move ul and links to navigation component */}
+          <div className="p-3">
+            <Routes>
+              <Route path='/' element={<Home/>}>
+              </Route>
+              <Route path="/about" element={<About/>}></Route>
+              <Route path="/contact-us" element={<ContactUs/>}></Route>
 
+            </Routes>
+          </div>
 
-          <Routes>
-            <Route path='/' element={<Home/>}>
-            </Route>
-            <Route path="/about" element={<About/>}>
-
-            </Route>
-          </Routes>
-        
+        <Footer/>
       </Router>
 
-      <Footer/>
     </div>
   )
 }
