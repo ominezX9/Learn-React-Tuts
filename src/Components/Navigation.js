@@ -8,6 +8,13 @@ import { useTransition, animated } from "react-spring";
 
 function Navigation(){
     const [showMenu, setShowMenu] = useState(false);
+
+    const maskTransitions =   useTransition(showMenu, {
+        from: {opacity: 0},
+        enter:{opacity: 1},
+        leave: {opacity: 0}
+    });
+
     const menuTransitions =   useTransition(showMenu, {
         from: {opacity: 0, left: '-100px'},
         enter:{opacity: 1, left: '0px'},
@@ -26,13 +33,28 @@ function Navigation(){
                 onClick={toggleMenu}
                 />
             </span>
+            {/* transparent background */}
+
+            {
+                maskTransitions((style, item) =>
+                       item ?  (<animated.div
+                        style={style}
+                        className="bg-black-t-50 fixed top-0 left-0 w-full h-full z-50"
+                        onClick={toggleMenu}
+                        >
+                    </animated.div>) : null
+            )}
+
             {
                 menuTransitions((style, item) =>
                        item ?  (<animated.div
                         style={style}
                         className="fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow"
                         >
-                        THis is the menu
+                        <span className="font-bold ">The menu</span>
+                        <ul>
+                            <li>Home</li>
+                        </ul>
                     </animated.div>) : null
             )}
         </nav>

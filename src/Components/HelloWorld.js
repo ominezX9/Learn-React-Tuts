@@ -4,7 +4,9 @@ import React from "react";
 class HelloWorld extends React.Component{
     render(){
         return(
-            <h1>Hello World</h1>
+            <div className="p-5 text-2xl">
+                <h1 className="font-bold">This is the homepage</h1>
+            </div>
         )
     }
     
