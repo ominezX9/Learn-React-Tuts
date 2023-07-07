@@ -14,6 +14,7 @@ import Header from "./Components/Header";
 import Home from "./Views/Home";
 import About from "./Views/About";
 import ContactUs from "./Views/ContactUs";
+import Product from "./Views/Product";
 
 
 
@@ -31,6 +32,8 @@ function App(){
               </Route>
               <Route path="/about" element={<About/>}></Route>
               <Route path="/contact-us" element={<ContactUs/>}></Route>
+              <Route path="/products/:id" element={<Product/>}></Route>
+
 
             </Routes>
           </div>
